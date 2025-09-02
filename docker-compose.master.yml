@@ -13,7 +13,7 @@ services:
             - ./data/master/meta:/var/lib/mfs
     hostname: mfsmaster
     environment:
-      - MFS_ENV=TEST 
+      - MFS_ENV=PROD 
       # In the TEST environment, if metadata.mfs file or other metadata files
       # like metdata.mfs.back and changelog.0.mfs are missing, the script will
       # create an EMPTY metadata file!

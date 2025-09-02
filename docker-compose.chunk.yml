@@ -9,7 +9,9 @@ services:
       - MASTER_HOST=10.30.30.0
     networks:
       - default
+    ports:
+      - "9422:9422"
     volumes: 
-      - /disk/md0/cs5/hdd0:/mnt/hdd0
-      - /disk/md0/cs5/meta:/var/lib/mfs
+      - /disk/md127/cs5/hdd0:/mnt/hdd0
+      - /disk/md127/cs5/meta:/var/lib/mfs
     restart: always
