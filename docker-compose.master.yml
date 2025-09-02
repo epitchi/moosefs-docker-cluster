@@ -45,7 +45,7 @@ services:
       # create an EMPTY metadata file!
       # When MFS_ENV=PROD metdata.mfs file will not be created!
     depends_on:
-      - mfsmaste
+      - mfsmaster
   mfsclient1:
     build: ./moosefs-client
     container_name: "mfsclient1"
