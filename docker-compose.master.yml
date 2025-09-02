@@ -45,73 +45,7 @@ services:
       # create an EMPTY metadata file!
       # When MFS_ENV=PROD metdata.mfs file will not be created!
     depends_on:
-      - mfsmaster
-
-  mfschunkserver1:
-    build: ./moosefs-chunkserver
-    container_name: "mfschunkserver1"
-    environment:
-      - LABELS=M
-      #- SIZE=100
-    links:
-      - mfsmaster
-    networks:
-      moosefsnet:
-        ipv4_address: "172.20.0.11"
-    volumes:
-            - /disk/md0/cs1/hhd0:/mnt/hdd0
-            - /disk/md0/cs1/meta:/var/lib/mfs
-    depends_on:
-      - mfsmaster
-  mfschunkserver2:
-    build: ./moosefs-chunkserver
-    container_name: "mfschunkserver2"
-    environment:
-      - LABELS=M,B
-      #- SIZE=100
-    links:
-      - mfsmaster
-    networks:
-      moosefsnet:
-        ipv4_address: "172.20.0.12"
-    volumes:
-            - /disk/md0/cs2/hdd0:/mnt/hdd0
-            - /disk/md0/cs2/meta:/var/lib/mfs
-    depends_on:
-      - mfsmaster
-  mfschunkserver3:
-    build: ./moosefs-chunkserver
-    container_name: "mfschunkserver3"
-    environment:
-      - LABELS=M,B
-      #- SIZE=100
-    links:
-      - mfsmaster
-    networks:
-      moosefsnet:
-        ipv4_address: "172.20.0.13"
-    volumes:
-            - /disk/md0/cs3/hdd0:/mnt/hdd0
-            - /disk/md0/cs3/meta:/var/lib/mfs
-    depends_on:
-      - mfsmaster
-  mfschunkserver4:
-    build: ./moosefs-chunkserver
-    container_name: "mfschunkserver4"
-    environment:
-      - LABELS=B
-      #- SIZE=100
-    links:
-      - mfsmaster
-    networks:
-      moosefsnet:
-        ipv4_address: "172.20.0.14"
-    volumes:
-            - /disk/md0/cs4/hdd0:/mnt/hdd0
-            - /disk/md0/cs4/meta:/var/lib/mfs
-    depends_on:
-      - mfsmaster
-
+      - mfsmaste
   mfsclient1:
     build: ./moosefs-client
     container_name: "mfsclient1"
@@ -130,10 +64,6 @@ services:
         ipv4_address: "172.20.0.101"
     depends_on:
       - mfsmaster
-      - mfschunkserver1
-      - mfschunkserver2
-      - mfschunkserver3
-      - mfschunkserver4
   mfsclient2:
     build: ./moosefs-client
     container_name: "mfsclient2"
@@ -152,10 +82,6 @@ services:
         ipv4_address: "172.20.0.102"
     depends_on:
       - mfsmaster
-      - mfschunkserver1
-      - mfschunkserver2
-      - mfschunkserver3
-      - mfschunkserver4
 
 networks:
   moosefsnet:
