@@ -2,7 +2,7 @@ ARG MFS_TAG="v4.57.6"
 
 # Build MooseFS chunkserver binaries from source
 # MFSbuilder image is based on Debian 12
-FROM ghcr.io/moosefs/mfsbuilder:latest AS mfsbuilder
+FROM moosefs/mfsbuilder:trixie AS mfsbuilder
 WORKDIR /moosefs
 ARG MFS_TAG
 RUN git clone --depth 1 --branch ${MFS_TAG} https://github.com/moosefs/moosefs.git /moosefs

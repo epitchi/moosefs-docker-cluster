@@ -25,6 +25,14 @@ sudo umount -l /user_data
 huyhoang@mfsmaster:$ sudo mfsmakesnapshot /mnt/moosefs/app_data/abc.qcow2 /mnt/moosefs/user_data/abc.qcow2
 ```
 
+### Trash Handle
+|root   |
+        |trash
+        |sustained
+**your trash locate at /trash, after delete in trash, it move to sustained to handle delete on all chunk server. so it wil take little to reblance space**
+```shell
+huyhoang@mfsmaster:$ sudo mfsmount -H 10.30.30.0 -o mfsmeta,mfsflattrash /mnt/trash/
+```
 
 #### Update (Append) snapshot
 //todo
